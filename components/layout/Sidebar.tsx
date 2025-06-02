@@ -1,6 +1,7 @@
 import { BsHouseFill, BsBellFill } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import SidebarLogo from "./SidebarLogo";
+import SidebarItem from "./SidebarItem";
 // import React from 'react';
 
 const Sidebar: React.FC = () => {
@@ -16,14 +17,15 @@ const Sidebar: React.FC = () => {
                 <div className="space-y-2 lg:w-[230px]">
                     <SidebarLogo />
                     {items.map((item) => (
-                        <a
+                        <SidebarItem
                             key={item.href}
                             href={item.href}
-                            className="flex items-center space-x-2 p-3 rounded-full hover:bg-blue-300 hover:bg-opacity-10 transition cursor-pointer"
-                        >
+                            label={item.label}
+                            icon={item.icon}
+                            className="flex items-center space-x-2 p-3 rounded-full hover:bg-blue-300 hover:bg-opacity-10 transition cursor-pointer">
                             <item.icon size={20} color="white" />
                             <span className="text-white">{item.label}</span>
-                        </a>
+                        </SidebarItem>
                     ))};
                 </div>
             </div>

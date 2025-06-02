@@ -1,7 +1,9 @@
 import { BsHouseFill, BsBellFill } from "react-icons/bs";
+import { BiLogOut } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 import SidebarLogo from "./SidebarLogo";
 import SidebarItem from "./SidebarItem";
+import SidebarTweetButton from "./SidebarTweetButton";
 // import React from 'react';
 
 const Sidebar: React.FC = () => {
@@ -22,11 +24,10 @@ const Sidebar: React.FC = () => {
                             href={item.href}
                             label={item.label}
                             icon={item.icon}
-                            className="flex items-center space-x-2 p-3 rounded-full hover:bg-blue-300 hover:bg-opacity-10 transition cursor-pointer">
-                            <item.icon size={20} color="white" />
-                            <span className="text-white">{item.label}</span>
-                        </SidebarItem>
+                            />
                     ))};
+                    <SidebarItem onClick={() => {}} icon={BiLogOut} label="Logout" />
+                    <SidebarTweetButton />
                 </div>
             </div>
         </div>

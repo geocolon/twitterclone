@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 interface SidebarItemProps {
     label: string;
     href?: string;
+    className?: string;
     icon: IconType;
     children?: ReactNode; // 🧠 tells TS you're accepting JSX
     onClick?: () => void;

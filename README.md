@@ -52,3 +52,13 @@ CREATE TABLE tweets (
 );
 ```
 
+
+## Supabase Server
+
+The `Server/server.js` file uses [Supabase](https://supabase.com) with Express to handle tweet APIs. Copy `.env.example` to `.env` and set `SUPABASE_URL` and `SUPABASE_KEY` along with your `DATABASE_URL`. Start the server with:
+
+```bash
+node Server/server.js
+```
+
+It exposes `/tweets` endpoints for posting and retrieving tweets.

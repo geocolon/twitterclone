@@ -39,3 +39,26 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
 # twitterclone
+
+## Database
+
+The API uses PostgreSQL. Copy `.env.example` to `.env` and update `DATABASE_URL` with your connection string. Run the following SQL to create a simple `tweets` table:
+
+```sql
+CREATE TABLE tweets (
+  id SERIAL PRIMARY KEY,
+  text TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+```
+
+
+## Supabase Server
+
+The `Server/server.js` file uses [Supabase](https://supabase.com) with Express to handle tweet APIs. Copy `.env.example` to `.env` and set `SUPABASE_URL` and `SUPABASE_KEY` along with your `DATABASE_URL`. Start the server with:
+
+```bash
+node Server/server.js
+```
+
+It exposes `/tweets` endpoints for posting and retrieving tweets.

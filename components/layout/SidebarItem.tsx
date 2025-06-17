@@ -1,24 +1,26 @@
 import { IconType } from 'react-icons';
 import { ReactNode } from 'react';
 
+import Link from 'next/link';
+
 interface SidebarItemProps {
     label: string;
     href?: string;
-    className?: string;
-    icon: IconType;
-    children?: ReactNode; // 🧠 tells TS you're accepting JSX
     onClick?: () => void;
+    icon: IconType;
+    className?: string;
+    children?: ReactNode; // 🧠 tells TS you're accepting JSX
 }
 
-const SidebarItem: React.FC<SidebarItemProps> = ({ 
-        label, 
-        href, 
+const SidebarItem: React.FC<SidebarItemProps> = ({
+        label,
+        href,
+        onClick,
         icon: Icon,
-        onClick    
     }) => {
-        return (
+        const content = (
             <div className="flex flex-row items-center">
-                <div 
+                <div
                     className="
                         relative
                         rounded-full
@@ -32,11 +34,12 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
                         p-4
                         cursor-pointer
                         lg:hidden
-                    ">
-                      <Icon size={24} color='white' />  
+                    "
+                >
+                    <Icon size={24} color='white' />
                 </div>
                 <div
-                className="
+                    className="
                     relative
                     hidden
                     lg:flex
@@ -47,7 +50,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
                     hover:bg-blue-300
                     hover:bg-opacity-10
                     cursor-pointer
-                ">
+                    "
+                >
                     <Icon size={24} color='white' />
                     <p className="hidden lg:block text-white text-xl">
                         {label}
@@ -55,9 +59,19 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
                 </div>
 
             </div>
-    );
+        );
+
+        if (href) {
+            return (
+                <Link href={href} onClick={onClick} className="block">
+                    {content}
+                </Link>
+            );
+        }
+        return (
+            <div onClick={onClick}>
+                {content}
+            </div>
+        );
 }
 export default SidebarItem;
-// Last modified: 2025-06-01
-
-// 16:58

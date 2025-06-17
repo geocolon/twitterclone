@@ -10,4 +10,3 @@ export default function Home() {
   );
 }
 
-// time 31:04

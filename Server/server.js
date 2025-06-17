@@ -1,3 +1,6 @@
+require('dotenv').config();
+console.log('SUPABASE_URL:', process.env.SUPABASE_URL);
+console.log('SUPABASE_KEY:', process.env.SUPABASE_KEY);
 const express = require('express');
 const { createClient } = require('@supabase/supabase-js');
 
@@ -24,6 +27,8 @@ app.post('/tweets', async (req, res) => {
   if (error) return res.status(500).json({ error: error.message });
   res.json({ success: true });
 });
+
+console.log('Connecting to Supabase:', supabaseUrl.slice(0, 30));
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

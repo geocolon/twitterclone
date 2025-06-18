@@ -1,4 +1,5 @@
 import useLoginModal from '@/hooks/useLoginModal';
+import useRegisterModal from '@/hooks/useRegisterModal';
 import Modal from '../Modal';
 import {useState, useCallback} from 'react';
 import Input from '../Input';
@@ -9,6 +10,16 @@ const LoginModal = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const registerModal = useRegisterModal();
+
+    const onToggle = useCallback(() => {
+        if (isLoading) return;
+
+        loginModal.onClose();
+        registerModal.onOpen();
+
+
+    }, [isLoading, registerModal, loginModal]);
 
     const onSubmit = useCallback(async () => {
         try {
@@ -43,6 +54,19 @@ const LoginModal = () => {
             />
         </div>
     )
+
+    const footerContent = (
+        <div
+            className="text-neutral-400 text-center mt-4 font-light">
+                <p> First time using our service? 
+                    <span
+                        onClick={onToggle}
+                        className="text-white cursor-pointer hover:underline">
+                            Create an account
+                    </span>
+                </p>
+        </div>
+    )
     
     return (
         <Modal 
@@ -53,6 +77,7 @@ const LoginModal = () => {
             onClose={loginModal.onClose}
             onSubmit={onSubmit}
             body={bodyContent}
+            footer={footerContent}
         />
     );
 }

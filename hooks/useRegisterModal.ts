@@ -6,7 +6,7 @@ interface RegisterModalState {
   onClose: () => void;
 }
 const useRegisterModal = create<RegisterModalState>((set) => ({
-  isOpen: true,
+  isOpen: false,
   onOpen: () => set({isOpen: true}),
   onClose: () => set({isOpen: false}),
 }));               
